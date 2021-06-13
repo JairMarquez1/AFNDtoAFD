@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>- Conversión AFND a AFD -</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <div class="bodypage">
+
+        <h1>Conversión AFND a AFD</h1><br>
+        <h3>Cantidad de simbolos:<input id="nSimbolos" type="number" name="" value="2" min="2" max="10" onchange="cambiarAlfabeto(this)"> </h3>
+        <br><br>
+
+        <table id="Table" name="Table">
+           <tr>
+                <td class="button" id="addbutton" class="button" onclick="add()" style="border-radius: 0"> + </td>
+                <td><input type="" name="" maxlength="1" placeholder="λ"></td>
+                <td><input type="" name="" maxlength="1" placeholder="λ"></td>
+           </tr>
+           <tr>
+                <td class="td2" ><input type="text" value="" tabindex="1" maxlength="4" placeholder=">q₀" type="text"/></td>
+                <td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ" type="text"/></td>
+                <td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ" type="text"/></td>
+            </tr>
+            <tr>
+                <td class="td2"><input type="text" value="" tabindex="1" maxlength="11" placeholder="q₁" type="text"/></td>
+                <td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ" type="text"/></td>
+                <td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td class="button" id="removebutton" class="button" onclick="remove()" style="border-radius: 0"> - </td>
+                <td></td>
+                <td></td>
+           </tr>
+        </table>
+
+        <br><br>
+        <div id="aviso"></div>
+        <br>
+        <div class="button" style="" onclick="afndToAfd()">Convertir</div>
+        <br><br>
+        <div id="tablaAFD"></div>
+
+    </div>
+
+<script src="main.js"></script>
+
+</body>
+
+</html>
