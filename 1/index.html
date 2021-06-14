@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Automata contador de palabras</title>
+	<link rel="stylesheet" href="styles.css">
+	
+</head>
+<body>
+<div id="cuerpo">
+	<h2>Automata contador de palabras "web" y "ebay"</h2>
+	<input type="file" id="inputfile" accept=".txt"><br>
+	<textarea id="output" placeholder="Escribe o selecciona un archivo" spellcheck="false"></textarea>
+	<script type="text/javascript" src="main.js"></script>
+	<h4 id="boton" onclick="calcular()">Buscar coincidencias</h4>
+	<h4>Coincidencias encontradas:</h4>
+	<h3>web: <span id="webQ">0</span></h3>
+	<h3>ebay: <span id="ebayQ">0</span></h3>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>- Conversión AFND a AFD -</title>
+    <title>Conversión AFND a AFD</title>
     <link rel="stylesheet" href="styles.css">
     <script src="main.js"></script>
 </head>
@@ -46,6 +46,15 @@
         <div class="button" style="" onclick="afndToAfd()">Convertir</div>
         <br><br>
         <div id="tablaAFD"></div>
+        <br><br>
+        <p style="text-align: left; margin: 15%;">
+            1. Es muy importante seleccionar el número de símbolos antes de empezar a llenar la tabla.<br><br>
+            2. Es necesario separar los estados con comas ","<br><br>
+            3. Si utiliza un "*" para los estados de aceptación, se debe incluir en todos los campos que aparezca tal estado,
+            o se mostrará el mensaje: <span style="color: yellow">El estado "x" no está definido</span><br><br>
+            4. El estado inicial siempre será el primero, no es necesario indicarlo. <br><br>
+            5. Si obtiene una tabla vacía, posiblemente su AFND no esté bien formado. <br><br>
+        </p>
 
     </div>
 
