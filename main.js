@@ -149,7 +149,7 @@ function afndToAfd(){
     var filasAFD;
     for(var v = 0; v < estados.length; v++){
         aux = 1;
-        filaAFD = `<tr><td class="td2">${estados[v]}</td>`;
+        filaAFD = `<tr><td class="td2">${uniq(estados[v].split("")).join("")}</td>`;
         for (var w = 0; w < nSimb ; w++){
             console.log("test:",transiciones[v][w] );
             indexEstadoValidado =  estados.indexOf(transiciones[v][w]);
