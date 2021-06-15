@@ -13,7 +13,7 @@ function add(){
     var row = tabla.insertRow(states+1);
     var cell = row.insertCell(0);
     cell.className = "td2";
-    cell.innerHTML = `<input onClick="" type="text" value="" tabindex="1" maxlength="4" placeholder="q${index}"/>`;
+    cell.innerHTML = `<input onClick="" type="text" value="" tabindex="1" maxlength="2" placeholder="q${index}"/>`;
     for (var i=1; i <= nSimb ; i++){
         cell = row.insertCell(i);
         cell.innerHTML = `<input onClick="" type="text" value="" tabindex="1" maxlength="11" placeholder="δ"/>`;
@@ -41,11 +41,11 @@ function cambiarAlfabeto(e){
     }
     newTable+=`</tr>`;
     //First row
-    newTable+=`<tr><td class="td2"><input type="text" value="" tabindex="1" maxlength="4" placeholder=">q₀"/></td>${'<td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ"/></td>'.repeat(nSimb)}`;
+    newTable+=`<tr><td class="td2"><input type="text" value="" tabindex="1" maxlength="2" placeholder=">q₀"/></td>${'<td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ"/></td>'.repeat(nSimb)}`;
     newTable+=`</tr>`;
     //Table Body------------------------------------------------------------------------------------------------------------//
     for (var i=0; i < states-1 ; i++) {   
-        newTable+=`<tr><td class="td2"><input type="text" value="" tabindex="1" maxlength="4" placeholder="q${((i < 10)? subs[i+1] : "ₙ")}"/></td>${'<td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ"/></td>'.repeat(nSimb)}</tr>`;
+        newTable+=`<tr><td class="td2"><input type="text" value="" tabindex="1" maxlength="2" placeholder="q${((i < 10)? subs[i+1] : "ₙ")}"/></td>${'<td><input type="text" value="" tabindex="1" maxlength="11" placeholder="δ"/></td>'.repeat(nSimb)}</tr>`;
     }
     //Table Footer----------------------------------------------------------------------------------------------------------//
     newTable+=`<tr><td class="button" id="removebutton" class="button" onclick="remove()" style="border-radius: 0"> - </td>${'<td></td>'.repeat(nSimb)}</tr>`;
@@ -83,6 +83,7 @@ function afndToAfd(){
         estado = afnd[i][0];
         if (estado == ""){aviso.innerHTML = "Todos los estados deben tener nombre"; return;}
         if (estados.indexOf(estado) != -1){aviso.innerHTML = "Todos los estados deben tener diferente nombre"; return;}
+        if ((estado.length > 1) && estado.indexOf("*") == -1 ) {aviso.innerHTML = "Los estados deben tener un caracter de longitud,<br> solo de ser estados de aceptacion pueden<br>incluir un asterisco y un caracter(leer punto 3)"; return;}
         estados.push(estado);
     }
     console.log("Estados: ",estados);
@@ -149,9 +150,9 @@ function afndToAfd(){
     var filasAFD;
     for(var v = 0; v < estados.length; v++){
         aux = 1;
-        filaAFD = `<tr><td class="td2">${estados[v]}</td>`;
+        filaAFD = `<tr><td class="td2">${uniq(estados[v].split("")).join("")}</td>`;
         for (var w = 0; w < nSimb ; w++){
-            console.log("test:",transiciones[v][w] );
+            //console.log("test:",transiciones[v][w] );
             indexEstadoValidado =  estados.indexOf(transiciones[v][w]);
             //Se incluyen solo los estados sin transiciones vacías
             if(transiciones[v][w] == "") {aux = -1;break;}
@@ -186,7 +187,9 @@ function excluirEstados(tabla){
         tabla.forEach(function(fila,b){
             for(var c = 1; c < nSimb+1; c++){
                 auxW=0;
-                transValidada = fila[c].split(",");
+                try{
+                transValidada = fila[c].split(",");}
+                catch(error){};
                 transValidada.forEach(function(element, index){
                     if (element=="" || excluidos.indexOf(element) != -1)
                     auxW++;
