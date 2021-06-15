@@ -183,6 +183,7 @@ function uniq(a) {
 function excluirEstados(tabla){
     console.log("ex");
     let excluidos =[];
+    accesibles = accesible(tabla,tabla[0][0]);
     for (var a = 0; a < states; a++){
         tabla.forEach(function(fila,b){
             for(var c = 1; c < nSimb+1; c++){
@@ -194,10 +195,23 @@ function excluirEstados(tabla){
                     if (element=="" || excluidos.indexOf(element) != -1)
                     auxW++;
                 })
-                if(auxW == transValidada.length)
+                if(auxW == transValidada.length || accesibles.indexOf(fila[0])==-1)
                     excluidos.push(fila[0]);  
             }
         })
     }
     return uniq(excluidos);
+}
+
+function accesible(tabla,estado){
+    accesibles = [];
+    accesibles.push(estado);
+    for (var o = 0; o < nSimb; o++){
+        if(tabla[o][1].split(",").length==1 && accesibles.indexOf(tabla[o][0])!=-1)
+            accesibles.push(tabla[o][1]);
+        if(tabla[o][2].split(",").length==1 && accesibles.indexOf(tabla[o][0])!=-1)
+            accesibles.push(tabla[o][2]);
+    }
+    return uniq(accesibles);
+
 }
