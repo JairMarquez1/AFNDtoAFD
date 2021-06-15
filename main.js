@@ -152,7 +152,7 @@ function afndToAfd(){
         aux = 1;
         filaAFD = `<tr><td class="td2">${uniq(estados[v].split("")).join("")}</td>`;
         for (var w = 0; w < nSimb ; w++){
-            console.log("test:",transiciones[v][w] );
+            //console.log("test:",transiciones[v][w] );
             indexEstadoValidado =  estados.indexOf(transiciones[v][w]);
             //Se incluyen solo los estados sin transiciones vacías
             if(transiciones[v][w] == "") {aux = -1;break;}
@@ -187,7 +187,9 @@ function excluirEstados(tabla){
         tabla.forEach(function(fila,b){
             for(var c = 1; c < nSimb+1; c++){
                 auxW=0;
-                transValidada = fila[c].split(",");
+                try{
+                transValidada = fila[c].split(",");}
+                catch(error){};
                 transValidada.forEach(function(element, index){
                     if (element=="" || excluidos.indexOf(element) != -1)
                     auxW++;
