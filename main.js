@@ -206,11 +206,15 @@ function excluirEstados(tabla){
 function accesible(tabla,estado){
     accesibles = [];
     accesibles.push(estado);
-    for (var o = 0; o < nSimb; o++){
-        if(tabla[o][1].split(",").length==1 && accesibles.indexOf(tabla[o][0])!=-1)
-            accesibles.push(tabla[o][1]);
-        if(tabla[o][2].split(",").length==1 && accesibles.indexOf(tabla[o][0])!=-1)
-            accesibles.push(tabla[o][2]);
+    for (var o = 0; o < states; o++){
+        for (var p = 1; p <= (nSimb); p++){
+            console.log("nSimb",nSimb)
+            console.log(p);
+            if(tabla[o][p].split(",").length<2 && accesibles.indexOf(tabla[o][0])!=-1){
+                accesibles.push(tabla[o][p]);
+                console.log(accesibles);
+            }
+        }
     }
     return uniq(accesibles);
 
